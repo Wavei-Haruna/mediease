@@ -1,3 +1,4 @@
+// src/components/NavBar.tsx
 import React, { useState } from 'react';
 import NavItems from '../utils/NavItems'; // Adjust the import path as necessary
 import Logo from '../assets/images/logo.png';
@@ -7,7 +8,7 @@ import { Menu } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { currentUser, logout } = useAuth();
+  const { currentUser, role, logout } = useAuth(); // Access role from context
   const navigate = useNavigate();
 
   const handleSignOut = async () => {
@@ -15,23 +16,23 @@ const Navbar: React.FC = () => {
       await logout();
       navigate('/login');
     } catch (error) {
-      console.error("Sign out error:", error);
+      console.error('Sign out error:', error);
     }
   };
 
   const authItems = currentUser
     ? [
-        { id: '1', title: 'Dashboard', link: currentUser.role === 'admin' ? '/admin-dashboard' : '/customer-dashboard' },
-        { id: '2', title: 'Sign Out', link: '#', onClick: handleSignOut }
+        { id: '1', title: 'Dashboard', link: role === 'admin' ? '/admin-dashboard' : '/customer-dashboard' },
+        { id: '2', title: 'Sign Out', link: '#', onClick: handleSignOut },
       ]
     : [
         { id: '3', title: 'Login', link: '/login' },
-        { id: '4', title: 'Sign Up', link: '/signup' }
+        { id: '4', title: 'Sign Up', link: '/signup' },
       ];
 
   const generalItems = [
     { id: '5', title: 'Home', link: '/' },
-    { id: '6', title: 'Impact', link: '/impact' }
+    { id: '6', title: 'Impact', link: '/impact' },
   ];
 
   return (
@@ -39,14 +40,14 @@ const Navbar: React.FC = () => {
       <img src={Logo} alt="Logo" className="h-10" />
       <div className="hidden md:flex justify-between w-1/2">
         <NavItems items={generalItems} />
-        <NavItems items={authItems}  className=''/>
+        <NavItems items={authItems} className="" />
       </div>
       <div className="md:hidden flex items-center">
         <Menu className="text-black cursor-pointer" size={24} onClick={() => setMenuOpen(!menuOpen)} />
       </div>
-      <div className={`nav-menu md:hidden block z-50  ${menuOpen ? 'active open' : ''}`}>
+      <div className={`nav-menu md:hidden block z-50 ${menuOpen ? 'active open' : ''}`}>
         <NavItems items={generalItems} />
-        <NavItems items={authItems} className='my-6 ' />
+        <NavItems items={authItems} className="my-6" />
       </div>
     </div>
   );

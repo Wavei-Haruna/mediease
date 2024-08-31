@@ -1,12 +1,15 @@
+// App.tsx
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/NavBar';
 import Home from './pages/home/Home';
 import Login from './components/Login';
-
-import { AuthProvider } from './context/AuthContext';
-import PrivateRoute from './components/PrivateRoute';
 import SignUp from './components/SignUp';
+import AdminDashboard from './pages/admin/AdminDashboard'; // Path adjusted to match your structure
+import Appointments from './pages/admin/Appointments';
+import Users from './pages/admin/Users';
+import Settings from './pages/admin/Settings';
+import { AuthProvider } from './context/AuthContext';
 
 const App: React.FC = () => {
   return (
@@ -19,13 +22,15 @@ const App: React.FC = () => {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
-
-              {/* <Route path="/dashboard" element={
-                <PrivateRoute>
-                
-                </PrivateRoute>
-              } /> */}
-              {/* Add other routes here */}
+              
+              {/* Admin Dashboard Routes */}
+              <Route path="/dashboard" element={<AdminDashboard />}>
+                <Route path="appointments" element={<Appointments />} />
+                <Route path="users" element={<Users />} />
+                <Route path="settings" element={<Settings />} />
+                <Route index element={<div>Welcome to the Admin Dashboard</div>} />
+              </Route>
+              
               <Route path="*" element={<div>404 Not Found</div>} /> {/* Handle unknown routes */}
             </Routes>
           </main>

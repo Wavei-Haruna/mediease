@@ -5,7 +5,7 @@ async function createAdminUser() {
   try {
     // Create a new user
     const userRecord = await admin.auth().createUser({
-      email: 'admin@gmail.com',
+      email: 'administrator@gmail.com',
       password: '000000',
       displayName: 'Admin',
       phoneNumber: '+233551837449', // Ensure the phone number is in E.164 format
@@ -19,8 +19,8 @@ async function createAdminUser() {
     // Add user data to Firestore
     const userDocRef = db.collection('users').doc(userRecord.uid);
     await userDocRef.set({
-      email: 'admin@gmail.com',
-      name: 'Admin',
+      email: 'administrator@gmail.com',
+      name: 'Cusmos',
       phone: '+233551837449', // Ensure phone is a string
       role: 'admin',
     });
