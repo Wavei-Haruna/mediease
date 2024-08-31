@@ -1,8 +1,8 @@
-import { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import { useState, useEffect,  } from "react";
 import { doc, updateDoc, deleteDoc, getDocs, collection } from "firebase/firestore";
 import { db } from "../../firebase";
 import Swal from "sweetalert2";
-import { Calendar, MapPin, Phone, Edit, Trash2, CheckCircle } from "lucide-react";
+import { Calendar, MapPin, Phone,  Trash2, CheckCircle } from "lucide-react";
 import Loader from "../../components/Loader"; // Adjust the import path if necessary
 
 interface Appointment {
@@ -17,7 +17,7 @@ interface Appointment {
   userName: string; // Added userName field
 }
 
-const appointmentStatuses = ["Pending", "Successful", "Failed", "Cancelled"];
+
 
 const Appointments = () => {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
