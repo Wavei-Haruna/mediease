@@ -10,6 +10,9 @@ import Appointments from './pages/admin/Appointments';
 import Users from './pages/admin/Users';
 import Settings from './pages/admin/Settings';
 import { AuthProvider } from './context/AuthContext';
+import UserDashboard from './pages/user/UserDashboard';
+import UserAppointments from './pages/user/Appointments';
+import UserSettings from './pages/user/Settings';
 
 const App: React.FC = () => {
   return (
@@ -23,8 +26,16 @@ const App: React.FC = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
               
-              {/* Admin Dashboard Routes */}
-              <Route path="/dashboard" element={<AdminDashboard />}>
+              {/*User Dashboard Routes */}
+              <Route path="/customer-dashboard" element={<UserDashboard />}>
+                <Route path="appointments" element={<UserAppointments />} />
+
+                <Route path="settings" element={<UserSettings />} />
+                <Route index element={<div>Welcome to the your Dashboard</div>} />
+              </Route>
+              
+              {/*  Admin Dashboard Routes */}
+              <Route path="/admin-dashboard" element={<AdminDashboard />}>
                 <Route path="appointments" element={<Appointments />} />
                 <Route path="users" element={<Users />} />
                 <Route path="settings" element={<Settings />} />

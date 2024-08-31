@@ -11,25 +11,20 @@ const Sidebar = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/admin-dashboard" className="flex items-center p-4 hover:bg-gray-700">
+            <Link to="/dashboard" className="flex items-center p-4 hover:bg-gray-700">
               <Home className="w-6 h-6 mr-3" />
               Dashboard
             </Link>
           </li>
           <li>
-            <Link to="/admin-dashboard/appointments" className="flex items-center p-4 hover:bg-gray-700">
+            <Link to="/customer-dashboard/appointments" className="flex items-center p-4 hover:bg-gray-700">
               <Calendar className="w-6 h-6 mr-3" />
               Appointments
             </Link>
           </li>
+          
           <li>
-            <Link to="/admin-dashboard/users" className="flex items-center p-4 hover:bg-gray-700">
-              <Users className="w-6 h-6 mr-3" />
-              Users
-            </Link>
-          </li>
-          <li>
-            <Link to="/admin-dashboard/settings" className="flex items-center p-4 hover:bg-gray-700">
+            <Link to="/customer-dashboard/settings" className="flex items-center p-4 hover:bg-gray-700">
               <Settings className="w-6 h-6 mr-3" />
               Settings
             </Link>
