@@ -1,10 +1,9 @@
-// src/pages/Login.tsx
 import { useAuth } from "../context/AuthContext";
 import PrimaryButton from "../components/PrimaryButton";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Loader from "../components/Loader"; // Ensure you have the Loader component imported
+import Loader from "../components/Loader";
 
 export default function Login() {
   const [email, setEmail] = useState<string>("");
@@ -13,11 +12,9 @@ export default function Login() {
   const { login, resetPassword, role } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true); // Start loader
-    try {
-      await login(email, password);
+  // Effect to handle navigation based on role once fetched
+  useEffect(() => {
+    if (role) {
       if (role === "admin") {
         navigate("/admin-dashboard");
       } else if (role === "customer") {
@@ -25,9 +22,17 @@ export default function Login() {
       } else {
         Swal.fire({
           icon: "warning",
-          title: "Role not found!",
+          title: `Role not found! ${role}`,
         });
       }
+    }
+  }, [role, navigate]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true); // Start loader
+    try {
+      await login(email, password);
     } catch (error) {
       Swal.fire({
         icon: "error",
