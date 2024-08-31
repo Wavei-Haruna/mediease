@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <div className="w-64 bg-gray-800 text-white h-full flex-shrink-0">
+    <div className="w-[185px] z-50 bg-gray-800 text-white h-screen fixed  overflow-y-clip
+
+     flex-shrink-0">
       <div className="p-4">
-        <h1 className="text-2xl font-bold">Admin Dashboard</h1>
+        
       </div>
       <nav>
         <ul>
