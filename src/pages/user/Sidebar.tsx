@@ -1,5 +1,5 @@
 // components/Sidebar.tsx
-import { Home, Calendar, Users, Settings, LogOut } from 'lucide-react';
+import { Home, Calendar,  Settings, LogOut } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
