@@ -18,7 +18,7 @@ const App: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
-        <div className="bg-background text-text min-h-screen flex flex-col">
+        <div className="bg-background text-text min-h-screen flex flex-col fixed w-screen ">
           <Navbar />
           <main className="flex-grow">
             <Routes>
@@ -45,11 +45,11 @@ const App: React.FC = () => {
               <Route path="*" element={<div>404 Not Found</div>} /> {/* Handle unknown routes */}
             </Routes>
           </main>
-          <footer className="bg-secondary text-white py-4">
+          {/* <footer className="bg-secondary text-white py-4">
             <div className="container mx-auto text-center">
               <p className="text-body-s">&copy; 2024 My Application. All rights reserved.</p>
             </div>
-          </footer>
+          </footer> */}
         </div>
       </Router>
     </AuthProvider>

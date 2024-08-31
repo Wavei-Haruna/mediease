@@ -65,10 +65,11 @@ const UserAppointments = () => {
             .map(doc => ({ id: doc.id, ...doc.data() } as Appointment));
           setAppointments(fetchedAppointments);
         } catch (error) {
+          const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
           Swal.fire({
             icon: "error",
             title: "Error fetching appointments",
-            text: error.message,
+            text: errorMessage,
           });
         } finally {
           setLoading(false); // Set loading false after fetching
@@ -127,10 +128,11 @@ const UserAppointments = () => {
       });
       setEditMode({ id: undefined, isEditing: false });
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
       Swal.fire({
         icon: "error",
         title: "Error submitting appointment",
-        text: error.message,
+        text: errorMessage,
       });
     } finally {
       setLoading(false);
@@ -159,10 +161,11 @@ const UserAppointments = () => {
       });
       setAppointments(prev => prev.filter(appointment => appointment.id !== id)); // Update appointments state
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
       Swal.fire({
         icon: "error",
         title: "Error deleting appointment",
-        text: error.message,
+        text: errorMessage,
       });
     } finally {
       setLoading(false);
@@ -256,46 +259,66 @@ const UserAppointments = () => {
         </div>
         <button
           type="submit"
-          className="inline-flex items-center px-4 py-2 bg-primary text-white font-semibold rounded-md shadow-sm hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary"
+          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
         >
           {editMode.isEditing ? "Update Appointment" : "Create Appointment"}
         </button>
       </form>
-      <div className="mt-8">
-        <h3 className="text-xl font-bold mb-4">Your Appointments</h3>
-        <ul className="space-y-4">
-          {appointments.map((appointment) => (
-            <li key={appointment.id} className="p-4 bg-white border border-gray-200 rounded-md shadow-sm">
-              <div className="flex justify-between items-center">
-                <div>
-                  <h4 className="text-lg font-semibold">{appointment.type}</h4>
-                  <p className="text-sm text-gray-500">{appointment.description}</p>
-                  <p className="text-sm text-gray-500 flex items-center"><Phone className="mr-2 h-4 w-4" />{appointment.phone}</p>
-                  <p className="text-sm text-gray-500 flex items-center"><MapPin className="mr-2 h-4 w-4" />{appointment.location}</p>
-                  <p className="text-sm text-gray-500 flex items-center"><Calendar className="mr-2 h-4 w-4" />{new Date(appointment.date).toLocaleDateString()}</p>
-                  <p className="text-sm text-gray-500">Status: {appointment.status}</p> {/* Display status */}
-                </div>
-                <div className="flex items-center space-x-2">
-                  <button
-                    onClick={() => handleEdit(appointment)}
-                    className="p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none"
-                  >
-                    <Edit className="h-4 w-4" />
-                  </button>
-                  <button
-                    onClick={() => handleDelete(appointment.id)}
-                    className="p-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none"
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-4">Your Appointments</h3>
+      <div className="gap-x-10 grid md:grid-cols-2">
+        {appointments.map(appointment => (
+          <div className="">
+            <div key={appointment.id} className="p-6 bg-white rounded-lg shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between border border-gray-200 transition-transform transform hover:scale-105 hover:shadow-xl">
+   <div className="flex flex-col md:flex-row md:items-center w-full space-y-4 md:space-y-0 md:space-x-6">
+    <div className="flex flex-col space-y-2">
+      <h4 className=" font-bold text-gray-800">{appointment.type}</h4>
+      <p className="text-gray-600">{appointment.description}</p>
+    </div>
+    <div className="flex flex-col space-y-2">
+      <p className="text-gray-600 flex items-center text-sm capitalize">
+        <Phone className="mr-2 h-4 w-4 text-blue-500" />
+        {appointment.phone}
+      </p>
+      <p className="text-gray-600 flex items-center text-sm capitalize">
+        <MapPin className="mr-2 h-4 w-4 text-green-500" />
+        {appointment.location}
+      </p>
+      <p className="text-gray-600 flex items-center text-sm capitalize">
+        <Calendar className="mr-2 h-4 w-4 text-red-500" />
+        {new Date(appointment.date).toLocaleDateString()}
+      </p>
+    </div>
+    <div className="flex flex-col space-y-2">
+      <p className="text-gray-800 font-medium">Status:</p>
+      <p className={`text-sm font-semibold ${appointment.status === 'Pending' ? 'text-yellow-500' : 'text-green-500'}`}>
+        {appointment.status}
+      </p>
+      </div>
+       </div>
+      <div className="flex-col items-center space-y-6 mx-3">
+              <button
+                className="p-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-md"
+                onClick={() => handleEdit(appointment)}
+              >
+                <Edit className="h-4 w-4" />
+              </button>
+              <button
+                className="p-2 bg-red-500 hover:bg-red-600 text-white rounded-md"
+                onClick={() => handleDelete(appointment.id)}
+              >
+                <Trash2 className="h-4 w-4" />
+              </button>
+            </div>
+         </div>
+
+            
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
 export default UserAppointments;
+

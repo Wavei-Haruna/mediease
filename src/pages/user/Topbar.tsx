@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 const Topbar: FC = () => {
   return (
-    <div className="bg-gray-800 text-white flex justify-between items-center p-4 shadow-md">
-      <h1 className="text-xl font-bold"> Dashboard</h1>
+    <div className="bg-gray-800 text-white fixed w-full   z-40  flex justify-between items-center p-4 shadow-md">
+      <div className="">Dashboard</div>
       <div className="flex items-center">
         <button className="relative mr-4">
           <Bell className="w-6 h-6" />
