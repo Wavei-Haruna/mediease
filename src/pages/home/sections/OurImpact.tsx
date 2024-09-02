@@ -11,7 +11,7 @@ const impactData = [
 
 const OurImpact: React.FC = () => {
   return (
-    <div className="p-6 font-helvetica-light h-[50vh]">
+    <div className="p-6 font-helvetica-light h-[120vh] md:h-[50vh]">
       <div className="text-center mb-12">
         <h1 className="text-3xl font-bold mb-4">Our Impact</h1>
         <p className="text-lg text-gray-700">Here’s how we’re making a difference.</p>

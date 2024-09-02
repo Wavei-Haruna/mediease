@@ -1,11 +1,14 @@
-// components/Sidebar.tsx
 import { Home, Calendar, Users, Settings, LogOut } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const Sidebar = () => {
+interface SidebarProps {
+  isOpen: boolean;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
   return (
-    <div className="w-64 bg-gray-800 text-white h-full flex-shrink-0">
-      <div className="p-4">
+    <div className={`fixed top-0 left-0 h-full bg-gray-800 text-white transition-transform duration-300 ${isOpen ? 'w-64' : 'w-0 md:w-64'} overflow-hidden md:relative md:w-64`}>
+      <div className={`p-4 ${isOpen ? 'block' : 'hidden md:block'}`}>
         <h1 className="text-2xl font-bold">Admin Dashboard</h1>
       </div>
       <nav>

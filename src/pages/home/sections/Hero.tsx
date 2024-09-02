@@ -5,7 +5,7 @@ import LooperGroup from '../../../assets/images/LooperGroup.png';
 
 const Hero: React.FC = () => {
   return (
-    <section className='p-6 md:p-0 mb-16'>
+    <section className='p-6 md:p-0 mb-16 top-20 relative'>
       <div className="">
         <HeroHeading className=''>Revolutionizing<span className='text-black'>,</span></HeroHeading>
         <h1 className='md:text-heading-1 text-5xl font-helvetica-light text-black'>Healthcare for the Sakin Community.</h1>
