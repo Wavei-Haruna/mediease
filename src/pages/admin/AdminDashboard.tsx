@@ -1,4 +1,3 @@
-// components/AdminDashboard.tsx
 import { FC } from 'react';
 import Sidebar from './Sidebar';
 import Topbar from './Topbar';
