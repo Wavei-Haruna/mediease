@@ -31,7 +31,7 @@ const App: React.FC = () => {
                 <Route path="appointments" element={<UserAppointments />} />
 
                 <Route path="settings" element={<UserSettings />} />
-                <Route index element={<div>Welcome to the your Dashboard</div>} />
+                <Route index element={<div>Welcome to the User Dashboard</div>} />
               </Route>
               
               {/*  Admin Dashboard Routes */}
@@ -39,7 +39,8 @@ const App: React.FC = () => {
                 <Route path="appointments" element={<Appointments />} />
                 <Route path="users" element={<Users />} />
                 <Route path="settings" element={<Settings />} />
-                <Route index element={<div>Welcome to the Admin Dashboard</div>} />
+                <Route index element={<Settings/>} />
+                
               </Route>
               
               <Route path="*" element={<div>404 Not Found</div>} /> {/* Handle unknown routes */}
