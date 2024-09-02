@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <div className="w-full sticky h-16 flex items-center font-semibold text-lg justify-between px-6 md:px-24 py-4 bg-white mb-6 shadow-md">
+    <div className="w-full fixed z-50 h-16 flex items-center font-semibold text-lg justify-between px-6 md:px-24 py-4 bg-white mb-6 shadow-md">
       <img src={Logo} alt="Logo" className="h-10" />
       <div className="hidden md:flex justify-between w-1/2">
         <NavItems items={generalItems} />
