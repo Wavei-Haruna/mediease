@@ -13,6 +13,7 @@ import { AuthProvider } from './context/AuthContext';
 import UserDashboard from './pages/user/UserDashboard';
 import UserAppointments from './pages/user/Appointments';
 import UserSettings from './pages/user/Settings';
+import Footer from './pages/Footer';
 
 const App: React.FC = () => {
   return (
@@ -51,6 +52,7 @@ const App: React.FC = () => {
               <p className="text-body-s">&copy; 2024 My Application. All rights reserved.</p>
             </div>
           </footer> */}
+          <Footer/>
         </div>
       </Router>
     </AuthProvider>

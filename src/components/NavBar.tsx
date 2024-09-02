@@ -31,22 +31,22 @@ const Navbar: React.FC = () => {
       ];
 
   const generalItems = [
-    { id: '5', title: 'Home', link: '/' },
-    { id: '6', title: 'Impact', link: '/impact' },
+    { id: '5', title: 'Welcome Sakin community ', link: '/' },
+    // { id: '6', title: 'Impact', link: '/impact' },
   ];
 
   return (
     <div className="w-full fixed z-50 h-16 flex items-center font-semibold text-lg justify-between px-6 md:px-24 py-4 bg-white mb-6 shadow-md">
       <img src={Logo} alt="Logo" className="h-10" />
       <div className="hidden md:flex justify-between w-1/2">
-        <NavItems items={generalItems} />
+        <NavItems items={generalItems} className='text-xl  font-helvetica-light '/>
         <NavItems items={authItems} className="" />
       </div>
       <div className="md:hidden flex items-center">
         <Menu className="text-black cursor-pointer" size={24} onClick={() => setMenuOpen(!menuOpen)} />
       </div>
       <div className={`nav-menu md:hidden block z-50 ${menuOpen ? 'active open' : ''}`}>
-        <NavItems items={generalItems} />
+        <NavItems items={generalItems}  />
         <NavItems items={authItems} className="my-6" />
       </div>
     </div>
