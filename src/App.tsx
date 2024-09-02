@@ -18,7 +18,7 @@ const App: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
-        <div className="bg-background text-text min-h-screen flex flex-col fixed w-screen ">
+        <div className="bg-background text-text min-h-screen flex flex-col  w-full overflow-hidden ">
           <Navbar />
           <main className="flex-grow">
             <Routes>

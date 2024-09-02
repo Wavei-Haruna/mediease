@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
     <section className='p-6 md:p-0 mb-16'>
       <div className="">
         <HeroHeading className=''>Revolutionizing<span className='text-black'>,</span></HeroHeading>
-        <h1 className='text-heading-1 font-helvetica-light text-black'>Healthcare for the Sakin Community.</h1>
+        <h1 className='md:text-heading-1 text-5xl font-helvetica-light text-black'>Healthcare for the Sakin Community.</h1>
       </div>
       <div className="md:w-[536px]">
         <p className='my-6 text-xl font-helvetica-light'>
@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
         </PrimaryButton>
       </div>
       <div className="relative">
-        <img src={HeroImg} alt='Hero Image' height={590} />
+        <img src={HeroImg} alt='Hero Image' height={590}  className='rounded-lg'/>
         <img src={LooperGroup} alt='Hero Image' className='absolute z-50 md:w-[852.32px] h-[718.48px] -top-96 -right-96' />
       </div>
     </section>

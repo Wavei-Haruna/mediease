@@ -39,7 +39,9 @@ const OurImpact: React.FC = () => {
                 separator=","
                 delay={2}
                 useEasing // Smooth animation
-                startOnMount={true} // Start counting when the component mounts
+                startOnMount={true}
+                className='text-3xl font-semibold text-primary'
+                // Start counting when the component mounts
               />
             </motion.div>
             <h3 className="text-xl font-semibold mt-4">{item.label}</h3>
