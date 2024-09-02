@@ -16,9 +16,9 @@ export default function Login() {
   useEffect(() => {
     if (role) {
       if (role === "admin") {
-        navigate("/admin-dashboard");
+        navigate("/");
       } else if (role === "customer") {
-        navigate("/customer-dashboard");
+        navigate("/");
       } else {
         Swal.fire({
           icon: "warning",

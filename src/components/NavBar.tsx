@@ -1,7 +1,6 @@
 // src/components/NavBar.tsx
 import React, { useState } from 'react';
 import NavItems from '../utils/NavItems'; // Adjust the import path as necessary
-import Logo from '../assets/images/logo.png';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Menu } from 'lucide-react';
