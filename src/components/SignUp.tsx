@@ -11,7 +11,6 @@ export default function SignUp() {
   const [password, setPassword] = useState<string>("");
   const [location, setLocation] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [role, setRole] = useState<string>("customer"); // Default role is 'customer'
   const [loading, setLoading] = useState<boolean>(false); // Loader state
   const { signup } = useAuth();
 
@@ -19,7 +18,7 @@ export default function SignUp() {
     e.preventDefault();
     setLoading(true); // Start loader
     try {
-      await signup(email, password, username, location, phoneNumber, role);
+      await signup(email, password, username, location, phoneNumber, "customer"); // Directly pass "customer" role
       Swal.fire({
         icon: "success",
         title: "Sign up successful!",
@@ -105,21 +104,6 @@ export default function SignUp() {
               className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition duration-300"
               required
             />
-          </div>
-          <div className="form-group">
-            <label className="block text-sm font-medium text-text mb-1" htmlFor="role">
-              Role
-            </label>
-            <select
-              id="role"
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition duration-300"
-              required
-            >
-              <option value="customer">Customer</option>
-              <option value="admin">Admin</option>
-            </select>
           </div>
           <PrimaryButton className="w-full py-3 text-lg font-semibold">
             Sign Up
