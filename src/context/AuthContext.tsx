@@ -90,6 +90,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       const userDocRef = doc(db, "users", user.uid);
       await setDoc(userDocRef, {
         username,
+        email,
         location,
         phoneNumber,
         role,

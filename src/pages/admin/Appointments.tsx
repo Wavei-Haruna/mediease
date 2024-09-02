@@ -98,7 +98,7 @@ const Appointments = () => {
     <div className="p-4 max-w-4xl mx-auto">
       {loading && <Loader />} {/* Render loader when loading */}
       <h2 className="text-2xl font-bold mb-4">Manage All Appointments</h2>
-      <div className="gap-x-10 grid md:grid-cols-2">
+      <div className="gap-10 grid md:grid-cols-2">
         {appointments.map(appointment => (
           <div key={appointment.id}>
             <div className="p-6 bg-white rounded-lg shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between border border-gray-200 transition-transform transform hover:scale-105 hover:shadow-xl">
