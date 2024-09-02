@@ -1,14 +1,21 @@
 // components/Sidebar.tsx
-import { Home, Calendar,  Settings, LogOut } from 'lucide-react';
+import { FC } from 'react';
+import { Home, Calendar, Settings, LogOut } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const Sidebar = () => {
-  return (
-    <div className="w-[185px] z-50 bg-gray-800 text-white h-screen fixed  overflow-y-clip
+interface SidebarProps {
+  isOpen: boolean;
+}
 
-     flex-shrink-0">
+const Sidebar: FC<SidebarProps> = ({ isOpen }) => {
+  return (
+    <div
+      className={`fixed top-0 left-0 h-screen z-50 bg-gray-800 text-white transition-transform duration-300 ${
+        isOpen ? 'translate-x-0' : '-translate-x-full'
+      } w-[185px]`}
+    >
       <div className="p-4">
-        
+        {/* Add logo or title here if needed */}
       </div>
       <nav>
         <ul>
@@ -24,7 +31,6 @@ const Sidebar = () => {
               Appointments
             </Link>
           </li>
-          
           <li>
             <Link to="/customer-dashboard/settings" className="flex items-center p-4 hover:bg-gray-700">
               <Settings className="w-6 h-6 mr-3" />
