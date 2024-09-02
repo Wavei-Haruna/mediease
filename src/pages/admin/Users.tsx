@@ -92,26 +92,26 @@ const Users = () => {
     <div className="p-4 max-w-6xl mx-auto">
       {loading && <Loader />}
       <h2 className="text-2xl font-bold mb-4">Manage Users</h2>
-      <div className="bg-white shadow-md rounded-lg overflow-hidden">
+      <div className="bg-white shadow-md rounded-lg overflow-x-auto">
         <table className="min-w-full bg-white">
           <thead>
             <tr>
-              <th className="py-3 px-5 text-left bg-gray-100 text-gray-600 font-semibold uppercase tracking-wider">
+              <th className="py-3 px-4 text-left bg-gray-100 text-gray-600 font-semibold uppercase tracking-wider">
                 Name
               </th>
-              <th className="py-3 px-5 text-left bg-gray-100 text-gray-600 font-semibold uppercase tracking-wider">
+              <th className="py-3 px-4 text-left bg-gray-100 text-gray-600 font-semibold uppercase tracking-wider hidden md:table-cell">
                 Email
               </th>
-              <th className="py-3 px-5 text-left bg-gray-100 text-gray-600 font-semibold uppercase tracking-wider">
+              <th className="py-3 px-4 text-left bg-gray-100 text-gray-600 font-semibold uppercase tracking-wider  md:table-cell">
                 Phone
               </th>
-              <th className="py-3 px-5 text-left bg-gray-100 text-gray-600 font-semibold uppercase tracking-wider">
+              <th className="py-3 px-4 text-left bg-gray-100 text-gray-600 font-semibold uppercase tracking-wider hidden md:table-cell">
                 Role
               </th>
-              <th className="py-3 px-5 text-left bg-gray-100 text-gray-600 font-semibold uppercase tracking-wider">
+              <th className="py-3 px-4 text-left bg-gray-100 text-gray-600 font-semibold uppercase tracking-wider hidden md:table-cell">
                 Status
               </th>
-              <th className="py-3 px-5 text-left bg-gray-100 text-gray-600 font-semibold uppercase tracking-wider">
+              <th className="py-3 px-4 text-left bg-gray-100 text-gray-600 font-semibold uppercase tracking-wider">
                 Actions
               </th>
             </tr>
@@ -119,24 +119,23 @@ const Users = () => {
           <tbody>
             {users.map(user => (
               <tr key={user.id} className="hover:bg-gray-50">
-                <td className="py-3 px-5 border-b border-gray-200">{user.username}</td>
-                <td className="py-3 px-5 border-b border-gray-200">{user.email}</td>
-                <td className="py-3 px-5 border-b border-gray-200">{user.phoneNumber}</td>
-                <td className="py-3 px-5 border-b border-gray-200">{user.role}</td>
-                <td className="py-3 px-5 border-b border-gray-200">
+                <td className="py-3 px-4 border-b border-gray-200">{user.username}</td>
+                <td className="py-3 px-4 border-b border-gray-200 hidden md:table-cell">{user.email}</td>
+                <td className="py-3 px-4 border-b border-gray-200  md:table-cell">{user.phoneNumber}</td>
+                <td className="py-3 px-4 border-b border-gray-200 hidden md:table-cell">{user.role}</td>
+                <td className="py-3 px-4 border-b border-gray-200 hidden md:table-cell">
                   <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${user.status === 'Active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
                     {user.status}
                   </span>
                 </td>
-                <td className="py-3 px-5 border-b border-gray-200 flex space-x-2">
-                 
-                {user.role !== "admin" && 
-                  <button
-                    className={`p-2 rounded-md ${user.status === 'Active' ? 'bg-yellow-500 hover:bg-yellow-600 text-white' : 'bg-green-500 hover:bg-green-600 text-white'}`}
-                    onClick={() => handleBlock(user.id, user.status)}
-                  >
-                    {user.status === "Active" ? <Lock className="h-4 w-4" /> : <Unlock className="h-4 w-4" />}
-                  </button>
+                <td className="py-3 px-4 border-b border-gray-200 flex space-x-2">
+                  {user.role !== "admin" && 
+                    <button
+                      className={`p-2 rounded-md ${user.status === 'Active' ? 'bg-yellow-500 hover:bg-yellow-600 text-white' : 'bg-green-500 hover:bg-green-600 text-white'}`}
+                      onClick={() => handleBlock(user.id, user.status)}
+                    >
+                      {user.status === "Active" ? <Lock className="h-4 w-4" /> : <Unlock className="h-4 w-4" />}
+                    </button>
                   }
                   {user.role !== "admin" && ( // Hide delete button if role is admin
                     <button
